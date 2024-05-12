@@ -1,0 +1,134 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+body, html {
+  height: 100%;
+  margin: 0;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+blockquote, q {
+  quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: "";
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/***
+MY STYLING  
+***/
+.dark-mode {
+  filter: invert(90%)
+}
+header {
+  margin-top: 20px;
+}
+nav ul {
+  display: flex; /* Use flexbox for horizontal layout */
+  flex-direction: row-reverse;
+}
+
+nav ul li {
+  margin-right: 20px; /* Adjust spacing between list items */
+}
+
+nav ul li:first-child {
+  margin-right: 40px; /* Remove margin from the last list item */
+}
+
+nav ul li i {
+  font-size: x-large;
+}
+nav ul li a {
+  text-decoration: none; /* Remove underline from links */
+  color: #5b2121; 
+  font-weight: bold; 
+  font-size: large;
+}
+.fa-solid:hover {
+  cursor: pointer;
+  color: yellowgreen;
+}
+
+button {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  text-align: center;
+  text-decoration: none;
+  /* display: inline-block; */
+  font-size: 16px;
+  margin: 4px 0px;
+  /* cursor: default; */
+  border-radius: 5px;
+}
+h1, h2 {
+  text-align: center;
+}
+#main-header {
+  font-size: 80px; /* Responsive font size based on viewport width */
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+#mainText {
+  font-size: 20px;
+}
+
+@media (max-width: 768px) {
+  #main-header {
+    font-size: 10vw; /* Adjust font size for smaller screens */
+  }
+  #mainText {
+    font-size: 20px;
+  }
+}
+
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 50vh;
+}

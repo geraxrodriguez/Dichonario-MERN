@@ -1,0 +1,44 @@
+<!-- our header opens our <html> and <head> as well as includes -->
+<!-- includes our <meta> tags -->
+<!-- our header does not closes our <head>, left open so we can... -->
+<!-- customize our view by adding stylesheets or scripts -->
+<!-- DONT FORGET TO CLOSE <head> AND OPEN <body> -->
+<%- include('partials/header') -%>
+
+  <link
+    rel="stylesheet" 
+    href="/css/style.css" 
+  />
+  <script src="https://kit.fontawesome.com/787cd8b7fd.js" crossorigin="anonymous"></script>
+  </head>
+  <body>
+
+    <header>
+        <nav>
+            <ul>
+                <li> <i class="fa-solid fa-moon" onclick="toggle()"></i> </li>
+                <li> <a href="/agrega" id="addBtn"></a> </li>
+                <!-- <li> <a href="">DichoDelDia</a> </li> -->
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+      <div class="container">
+        <h1 id="main-header">Bienvenidos to Dichonario</h1>
+          <!-- buttons ES | EN -->
+          <div class="language-buttons">
+              <button id="es">ES</button>
+              <button id="en">EN</button>
+          </div>
+          <div class='text'>
+            <h2 id="mainText"></h2>
+          </div>
+          <!-- end buttons ES | EN -->
+      </div>
+    </main>
+
+    <script src="/js/main.js"></script>
+
+<!-- our footer closes our <body> and <html> tags -->
+<%- include('partials/footer') -%>
