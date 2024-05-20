@@ -5,6 +5,7 @@ const Hero = ({
     subtitle = 'A dictionary for latin american colloquialisms.'
 }) => {
     return (
+        // <main className="bg-indigo-700 py-12 mb-4">
         <main className="bg-indigo-700 py-12 mb-4">
 
             <div className="max-w-7xl mx-auto text-center">
@@ -19,15 +20,15 @@ const Hero = ({
                 </p>
             </div>
 
-            <div className="">
+            <div className="border border-white">
                 {/* <div className="border border-black m-auto max-w-2xl"> */}
-                <form action='' className='mx-auto my-8 max-w-2xl'>
+                <form action='' className='border border-black flex flex-col mx-auto my-8 max-w-2xl'>
                     <input
                         type="text"
                         placeholder="Search dichos..."
                         className="border rounded-3xl w-full py-4 px-10 text-2xl required"
                     />
-                    <div className="border border-slate-400 w-full flex justify-center">
+                    <div className="border border-slate-400 w-full flex justify-around">
                         <button type="submit" className="border border-slate-800 text-white rounded-md px-3 py-2">
                             Search
                         </button>

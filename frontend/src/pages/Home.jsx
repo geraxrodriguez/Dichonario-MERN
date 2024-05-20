@@ -7,7 +7,7 @@ const Home = () => {
   return (
     <>
       < Hero />
-      < SearchBar />
+      {/* < SearchBar /> */}
     </>
   )
 }
