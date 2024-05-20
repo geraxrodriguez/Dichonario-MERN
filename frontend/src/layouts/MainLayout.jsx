@@ -5,7 +5,7 @@ import Navbar from '../components/Navbar';
 
 const MainLayout = () => {
   return (
-    <div>
+    <div className="h-screen bg-indigo-700">
         < Navbar />
         < Outlet />
     </div>

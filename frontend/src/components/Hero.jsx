@@ -6,39 +6,42 @@ const Hero = ({
 }) => {
     return (
         // <main className="bg-indigo-700 py-12 mb-4">
-        <main className="bg-indigo-700 py-12 mb-4">
+        <main className="bg-indigo-700 flex flex-col justify-center">
 
-            <div className="max-w-7xl mx-auto text-center">
-                <h1 className="text-4xl font-extrabold text-white sm:text-5xl md:text-6xl">
-                    {title}
-                </h1>
-                <h2 className="my-4 text-3xl text-white">
-                    {subtitle}
-                </h2>
-                <p className="my-4 text-2xl text-white">
-                    Now, you too, can "jaja"!
-                </p>
+            <div className="">
+                <div className="max-w-7xl min-w-96 mx-auto text-center">
+                    <h1 className="text-4xl font-extrabold text-white sm:text-5xl md:text-6xl">
+                        {title}
+                    </h1>
+                    <h2 className="my-4 text-3xl text-white">
+                        {subtitle}
+                    </h2>
+                    <p className="my-4 text-2xl text-white">
+                        Now, you too, can "jaja"!
+                    </p>
+                </div>
+
+                <div className="max-w-7xl mx-auto">
+                    {/* <div className="border border-black m-auto max-w-2xl"> */}
+                    <form action='' className='mx-auto max-w-2xl min-w-96'>
+                        <input
+                            type="text"
+                            placeholder="Search dichos..."
+                            className="border rounded-3xl w-full py-1 px-5 mb-4 text-2xl required"
+                        />
+                        <div className="w-full flex space-x-2 justify-center">
+                            <button type="submit" className="bg-indigo-500 text-white rounded-md px-3 py-2">
+                                Search
+                            </button>
+                            <button className="bg-indigo-500 text-white rounded-md px-3 py-2">
+                                Dicho of the Day
+                            </button>
+
+                        </div>
+                    </form>
+                </div>
             </div>
 
-            <div className="border border-white">
-                {/* <div className="border border-black m-auto max-w-2xl"> */}
-                <form action='' className='border border-black flex flex-col mx-auto my-8 max-w-2xl'>
-                    <input
-                        type="text"
-                        placeholder="Search dichos..."
-                        className="border rounded-3xl w-full py-4 px-10 text-2xl required"
-                    />
-                    <div className="border border-slate-400 w-full flex justify-around">
-                        <button type="submit" className="border border-slate-800 text-white rounded-md px-3 py-2">
-                            Search
-                        </button>
-                        <button className="border border-slate-800 text-white rounded-md px-3 py-2">
-                            Dicho of the Day
-                        </button>
-
-                    </div>
-                </form>
-            </div>
 
         </main>
     )
