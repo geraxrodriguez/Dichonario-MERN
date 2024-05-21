@@ -11,10 +11,11 @@ module.exports = {
     },
     getDichos: async (req, res) => {
         try {
-            console.log('getting dichos...')
             const dichos = await Dicho.find() // find method w/out args returns all documents in collection
-            console.log(dichos)
-            res.render('dichos.ejs', { dichos, })
+            res.status(200).json({
+                dichos,
+            });
+            console.log('dichos sent')
         } catch (err) {
             console.error('Error fetching dichos:', err);
             res.status(500).send('Internal Server Error');
