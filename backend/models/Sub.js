@@ -6,7 +6,11 @@ const SubSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-    meaning: {
+    literalMeaning: {
+        type: String,
+        required: true,
+    },
+    actualMeaning: {
         type: String,
         required: true,
     },
@@ -14,7 +18,7 @@ const SubSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-    variations: {
+    related: {
         type: String,
         required: false
     },

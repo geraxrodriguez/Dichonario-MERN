@@ -7,7 +7,7 @@ const Navbar = () => {
       : "border border-slate-800 text-white hover:bg-gray-500 rounded-md px-3 py-2"
 
   return (
-    <nav className='bg-indigo-700 border-b border-indigo-500 mb-28'>
+    <nav className='bg-indigo-700 border-b border-indigo-500'>
 
       <div className="mx-auto max-w-7xl min-w-96 lg:px-8 sm:px-6">
 
@@ -30,11 +30,11 @@ const Navbar = () => {
                 <NavLink to="/" className={linkClass}>
                   Home
                 </NavLink>
-                <NavLink to="/jobs" className={linkClass}>
+                <NavLink to="/dichos" className={linkClass}>
                   Dichos
                 </NavLink>
-                <NavLink to="/add-job" className={linkClass}>
-                  Add a Dicho
+                <NavLink to="/submit-dicho" className={linkClass}>
+                  Submit a Dicho
                 </NavLink>
               </div>
             </div>
