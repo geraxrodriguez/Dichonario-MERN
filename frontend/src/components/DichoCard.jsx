@@ -5,14 +5,9 @@ const DichoComponent = ({ dicho }) => {
   return (
     <div className="bg-white rounded-xl shadow-md relative">
       <div className="p-4">
-        {/* <div className="mb-6"> */}
-          {/* <h3 className="text-2xl font-bold">{dicho.dicho}</h3>
-          <p className="mt-2 text-sm">"{dicho.meaning}"</p> */}
-        {/* </div> */}
-
-        <Link to={'/dichos/mochate'}>
-          <h3 className="text-2xl font-bold">Mochate</h3>
-          <p className="mt-2 text-sm">Chop yourself (in half)</p>
+        <Link to={`/dichos/${dicho._id}`}>
+          <h3 className="text-2xl font-bold">{dicho.dicho}</h3>
+          <p className="mt-2 text-sm">{dicho.meaning}</p>
         </Link>
 
         {/* <div className="mb-5">
@@ -39,6 +34,7 @@ const DichoComponent = ({ dicho }) => {
             Read More
           </Link> */}
         {/* </div> */}
+        
       </div>
     </div>
   )

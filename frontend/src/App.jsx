@@ -14,7 +14,7 @@ const App = () => {
       <Route path="/" element={< MainLayout />}>
         <Route index element={< Home />} />
         <Route path="/dichos" element={< DichosPage />} />
-        <Route path="/dichos/mochate" element={< SingleDichoPage />} />
+        <Route path="/dichos/:id" element={< SingleDichoPage />} />
         <Route path="/submit-dicho" element={< SubmitDichoPage />} />
         <Route path="/success" element={< SuccessPage />} />
       </Route>

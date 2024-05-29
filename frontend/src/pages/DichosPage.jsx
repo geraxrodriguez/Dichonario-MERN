@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import DichoComponent from '../components/DichoComponent';
+import DichoCard from '../components/DichoCard';
 
 const Dichos = () => {
   const [dichos, setDichos] = useState([]);
@@ -29,10 +29,9 @@ const Dichos = () => {
           </h2>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {/* {dichos.map((dicho) => (
-              <DichoComponent  key={dicho._id} dicho={dicho} />
-            ))} */}
-            < DichoComponent />
+            {dichos.map((dicho) => (
+              <DichoCard key={dicho._id} dicho={dicho} />
+            ))}
           </div>
 
         </div>

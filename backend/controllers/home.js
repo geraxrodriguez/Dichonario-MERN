@@ -26,7 +26,7 @@ module.exports = {
     getDicho: async (req, res) => {
         try {
             const dicho = await Dicho.findById(req.params.id) // find method w/out args returns all documents in collection
-            res.render('dicho.ejs', { dicho, })
+            return res.status(200).json(dicho);
         } catch (err) {
             console.error('Error fetching dichos:', err);
             res.status(500).send('Internal Server Error');
@@ -37,27 +37,19 @@ module.exports = {
         try {
             console.log('We reached the createSub method')
             console.log(req.body)
-            //if user doesn't provide a dicho, significado, or translation, then FLASH EM (.ㅅ.)
-            //else, we submit submission to db and flash success message
-            // const { dicho, meaning, example, variations, comments } = req.body
-            // if (!dicho || !meaning || !example) {
-            //     req.flash('message', 'Oops! Something is missing :( Please make sure you have filled out all fields')
-            //     res.redirect('/agrega')
-            // }
-            //if user provides all dicho, meaning, and example, show success message
-            // else {
-            //     await Sub.create({ 
-            //         dicho: dicho, 
-            //         meaning: meaning, 
-            //         example: example,
-            //         variations: variations,
-            //         comments: comments,
-            //     })
-            //     req.flash('message', 'Success! Your submission will be reviewed by a team member :)')
-            //     res.redirect('/agrega')
-            // }
+            const { dicho, literalMeaning, actualMeaning, examples, related, comments } = req.body
+            const sub = await Sub.create({
+                dicho,
+                literalMeaning,
+                actualMeaning,
+                examples,
+                related,
+                comments,
+            })
+            return res.status(201).send(sub);
         } catch (err) {
             console.error(err)
+            res.status(500).send({ message: err.message });
         }
     },
 

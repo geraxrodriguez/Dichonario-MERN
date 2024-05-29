@@ -14,7 +14,7 @@ const SubSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-    example: {
+    examples: {
         type: String,
         required: true,
     },

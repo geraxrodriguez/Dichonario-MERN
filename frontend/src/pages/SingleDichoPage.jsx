@@ -1,8 +1,27 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react';
+import { useParams, Link } from 'react-router-dom';
+import axios from 'axios';
 // import { FaArrowLeft, FaMapMarker } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
 
 const SingleDichoPage = () => {
+    // pull id parameter from request
+    // use id to make get request to server for our specific dicho
+    const [dicho, setDicho] = useState({});
+    const { id } = useParams();
+    useEffect(() => {
+        const getDicho = async () => {
+            try {
+                // const res = await axios.get('https://dichonario.cyclic.app/dichos/${id}');
+                const res = await axios.get(`http://localhost:2222/dichos/${id}`);
+                console.log(res.data)
+                setDicho(res.data);
+            } catch (error) {
+                console.log('Error fetching data', error);
+            }
+        };
+        getDicho();
+    }, []); // ends useEffect()
+
     return (
         <>
             <section>
@@ -23,7 +42,7 @@ const SingleDichoPage = () => {
                             >
                                 {/* <div className="text-gray-500 mb-4">{job.type}</div> */}
                                 <h1 className="text-3xl font-bold">
-                                    Mochate
+                                    {dicho.dicho}
                                 </h1>
                                 {/* <div
                                     className="text-gray-500 mb-4 flex align-middle justify-center md:justify-start"
@@ -38,17 +57,14 @@ const SingleDichoPage = () => {
                                     Literally Means...
                                 </h3>
                                 <p className="mb-6">
-                                    To cut yourself in half. 
+                                    {dicho.meaning}
                                 </p>
 
                                 <h3 className="text-indigo-800 text-lg font-bold mb-1">
-                                    Actually Means...
+                                    example
                                 </h3>
                                 <p className="mb-6">
-                                    When we say "mochate!", we aren't telling you to chop yourself in half. We're telling you to pitch in.
-                                    Suppose you're out and just finished eating with a friend. The bill comes and you're friend looks at you
-                                    and says, "Mochate!"<br />
-                                    They're telling you to cooperate financially.
+                                    {dicho.example}
                                 </p>
 
                             </div>
