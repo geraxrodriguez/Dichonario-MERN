@@ -6,9 +6,9 @@ const Hero = ({
 }) => {
     return (
         // <main className="bg-indigo-700 py-12 mb-4">
-        <main className="bg-indigo-700 flex flex-col justify-center mt-32">
+        <main className="bg-indigo-700 flex flex-col justify-center">
 
-            <div className="">
+            <div className="pt-32">
                 <div className="max-w-7xl min-w-96 mx-auto text-center">
                     <h1 className="text-4xl font-extrabold text-white sm:text-5xl md:text-6xl">
                         {title}

@@ -17,6 +17,8 @@ const DichoSchema = new mongoose.Schema({
         type: String,
         required: false
     },
+    // comments implies user interaction
+    // better name to use would be 'sidenote'
     comments: {
         type: String,
         required: false,
