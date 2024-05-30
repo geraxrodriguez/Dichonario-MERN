@@ -9,6 +9,6 @@ router.get('/dichos/:id', homeController.getDicho)
 router.post('/dichos/:id/suggestion', homeController.postSuggestion)
 
 // router for creating dicho
-router.post('/agregaDicho', homeController.createSub)
+router.post('/submit-dicho', homeController.submitDicho)
 
 module.exports = router
