@@ -5,6 +5,7 @@ import Home from './pages/Home';
 import DichosPage from './pages/DichosPage'
 import SingleDichoPage from './pages/SingleDichoPage';
 import SubmitDichoPage from './pages/SubmitDichoPage';
+import SuccessPage from './pages/SuccessPage';
 import './App.css';
 
 const App = () => {
@@ -15,6 +16,7 @@ const App = () => {
         <Route path="/dichos" element={< DichosPage />} />
         <Route path="/dichos/mochate" element={< SingleDichoPage />} />
         <Route path="/submit-dicho" element={< SubmitDichoPage />} />
+        <Route path="/success" element={< SuccessPage />} />
       </Route>
     </Routes>
   );
