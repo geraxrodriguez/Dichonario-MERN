@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 const SingleDichoPage = () => {
-    const [dicho, setDicho] = useState({});
     const [suggestions, setSuggestions] = useState('')
+    const [dicho, setDicho] = useState({});
+    const navigate = useNavigate();
     const { id } = useParams();
 
     useEffect(() => {
@@ -23,7 +24,7 @@ const SingleDichoPage = () => {
         e.preventDefault();
         try {
             const res = await axios.post(`http://localhost:2222/dichos/${id}/suggestions`, { suggestions, })
-            console.log(res.data)
+            navigate('/success');
         } catch (error) {
             console.log('Error submitting form', error)
         }
