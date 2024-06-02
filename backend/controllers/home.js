@@ -58,10 +58,10 @@ module.exports = {
 
     postSuggestions: async (req, res) => {
         try {
-            // await Dicho.updateOne(
-            //     { _id: req.params.id },
-            //     { $push: { suggestions: req.body.suggestion } }
-            // );
+            await Dicho.updateOne(
+                { _id: req.params.id },
+                { $push: { suggestions: req.body.suggestions } }
+            );
             res.status(201).send('suggestion received')
         } catch (err) {
             console.error(err);
