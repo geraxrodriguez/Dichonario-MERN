@@ -1,9 +1,13 @@
-import React from 'react'
+import React, { useState } from 'react'
+import SearchBar from './SearchBar';
+import SearchResultsList from './SearchResultsList';
 
 const Hero = ({
     title = 'Dichonario',
     subtitle = 'A dictionary for latin american colloquialisms.'
 }) => {
+    const [results, setResults] = useState([]);
+
     return (
         // <main className="bg-indigo-700 py-12 mb-4">
         <main className="bg-indigo-700 flex flex-col justify-center">
@@ -21,24 +25,9 @@ const Hero = ({
                     </p>
                 </div>
 
-                <div className="max-w-7xl mx-auto">
-                    {/* <div className="border border-black m-auto max-w-2xl"> */}
-                    <form action='' className='mx-auto max-w-2xl min-w-96'>
-                        <input
-                            type="text"
-                            placeholder="Search dichos..."
-                            className="border rounded-3xl w-full py-1 px-5 mb-4 text-2xl required"
-                        />
-                        <div className="w-full flex space-x-2 justify-center">
-                            <button type="submit" className="bg-indigo-500 text-white rounded-md px-3 py-2">
-                                Search
-                            </button>
-                            <button className="bg-indigo-500 text-white rounded-md px-3 py-2">
-                                Dicho of the Day
-                            </button>
-
-                        </div>
-                    </form>
+                <div className="max-w-2xl min-w-96 mx-auto ">
+                    <SearchBar setResults={setResults} />
+                    <SearchResultsList results={results} />
                 </div>
             </div>
 
