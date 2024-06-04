@@ -4,7 +4,7 @@ import SearchResultsList from './SearchResultsList';
 
 const Hero = ({
     title = 'Dichonario',
-    subtitle = 'A dictionary for latin american colloquialisms.'
+    subtitle = 'A dictionary for latin american colloquialisms.',
 }) => {
     const [results, setResults] = useState([]);
 
@@ -27,7 +27,7 @@ const Hero = ({
 
                 <div className="max-w-2xl min-w-96 mx-auto ">
                     <SearchBar setResults={setResults} />
-                    <SearchResultsList results={results} />
+                    {results && results.length > 0 && <SearchResultsList results={results} />}
                 </div>
             </div>
 

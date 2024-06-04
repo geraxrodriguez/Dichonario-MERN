@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import SearchResultsList from './SearchResultsList';
 
 const SearchBar = () => {
   const [input, setInput] = useState("");
@@ -18,7 +19,7 @@ const SearchBar = () => {
         });
         setResults(results);
       })
-    };
+  };
 
   const handleChange = value => {
     setInput(value);
@@ -29,13 +30,15 @@ const SearchBar = () => {
     <form action='' className=''>
 
       <input
-        className="border rounded-3xl w-full py-1 px-5 mb-4 text-2xl required"
+        className="border rounded-lg w-full py-1 px-5 mb-1 text-2xl required"
         placeholder="Search dichos..."
         value={input}
         onChange={(e) => handleChange(e.target.value)}
       />
 
-      <div className="w-full flex space-x-2 justify-center">
+      {results && results.length > 0 && <SearchResultsList results={results} />}
+
+      <div className="w-full flex space-x-2 justify-center mt-3">
         <button type="submit" className="bg-indigo-500 text-white rounded-md px-3 py-2">
           Search
         </button>
