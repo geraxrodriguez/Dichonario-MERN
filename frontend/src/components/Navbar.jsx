@@ -7,9 +7,9 @@ const Navbar = () => {
       : "border border-slate-800 text-white hover:bg-amber-500 rounded-md px-3 py-2"
 
   return (
-    <nav className='bg-indigo-700 border-b border-indigo-500'>
+    <nav className='border-b border-indigo-500'>
 
-      <div className="mx-auto max-w-7xl min-w-96 lg:px-8 sm:px-6">
+      <div className="mx-auto max-w-4xl min-w-96 lg:px-8 sm:px-6">
 
         <div className='flex h-20 items-center justify-between'>
           
@@ -19,7 +19,7 @@ const Navbar = () => {
               <span className="hidden md:block text-white text-2xl font-bold"> {/* hidden md:block => hides element until md breakpoint is reached, typically >= 768px */}
                 Dichonario
               </span>
-              <span className="md:hidden mb-1 w-auto text-white text-5xl font-bold"> {/* hidden md:block => hides element until md breakpoint is reached, typically >= 768px */}
+              <span className="md:hidden mb-1 w-auto text-white text-5xl font-bold"> {/* hi dden md:block => hides element until md breakpoint is reached, typically >= 768px */}
                 DN
               </span>
 
