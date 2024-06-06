@@ -31,24 +31,24 @@ const SingleDichoPage = () => {
                         </div>
 
                         <div className="bg-white p-6 rounded-xl shadow-md mt-4 text-left text-xl md:text-2xl">
-                            <h3 className="text-indigo-800 font-extrabold mb-1">
+                            <h3 className="text-indigo-800 font-bold mb-1">
                                 Literal Translation:
                             </h3>
-                            <p className="mb-6">
+                            <p className="text-lg mb-6">
                                 {dicho.meaning}
                             </p>
 
-                            <h3 className="text-indigo-800 font-extrabold mb-1">
+                            <h3 className="text-indigo-800 font-bold mb-1">
                                 Actually Means:
                             </h3>
-                            <p className="mb-6">
+                            <p className="text-lg mb-6">
                                 {dicho.meaning}
                             </p>
 
-                            <h3 className="text-indigo-800 font-extrabold mb-1">
+                            <h3 className="text-indigo-800 font-bold mb-1">
                                 Example
                             </h3>
-                            <p className="mb-6">
+                            <p className="text-lg mb-6">
                                 {dicho.example}
                             </p>
                         </div>
