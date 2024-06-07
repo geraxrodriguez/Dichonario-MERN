@@ -22,7 +22,7 @@ const SingleDichoPage = () => {
     return (
         <>
             <section className="bg-indigo-50 flex flex-1 justify-center">
-                <div className="container py-10 px-6 border border-black">
+                <div className="container py-10 px-6 max-w-screen-md">
 
                         <div className="bg-white p-5 rounded-xl shadow-md text-center">
                             <h1 className="text-3xl font-bold">
@@ -30,31 +30,29 @@ const SingleDichoPage = () => {
                             </h1>
                         </div>
 
-                        <div className="bg-white p-6 rounded-xl shadow-md mt-4 text-left">
-                            <h3 className="text-indigo-800 text-lg font-bold mb-1">
+                        <div className="bg-white p-6 rounded-xl shadow-md mt-4 text-left text-xl md:text-2xl">
+                            <h3 className="text-indigo-800 font-extrabold mb-1">
                                 Literal Translation:
                             </h3>
                             <p className="mb-6">
                                 {dicho.meaning}
                             </p>
 
-                            <h3 className="text-indigo-800 text-lg font-bold mb-1">
+                            <h3 className="text-indigo-800 font-extrabold mb-1">
                                 Actually Means:
                             </h3>
                             <p className="mb-6">
                                 {dicho.meaning}
                             </p>
 
-                            <h3 className="text-indigo-800 text-lg font-bold mb-1">
-                                example
+                            <h3 className="text-indigo-800 font-extrabold mb-1">
+                                Example
                             </h3>
                             <p className="mb-6">
                                 {dicho.example}
                             </p>
-  
-
                         </div>
-
+                       
                 </div>
             </section>
         </>
