@@ -25,8 +25,11 @@ const SearchBar = () => {
       })
   };
 
-  const handleChange = value => {
-    setInput(value);
+  // This functions does two things:
+  // 1. Sets our input variable, which then updates our 'value' attribute within the form.
+  // 2. Uses our input variable to fetch data from API after every change. 
+  const handleChange = eTargetValue => {
+    setInput(eTargetValue);
     fetchData(input);
   };
   
@@ -39,7 +42,15 @@ const SearchBar = () => {
   const submit = (e) => {
     e.preventDefault();
     const id = selectedDicho._id
-    navigate(`/dichos/${id}`)
+    if (!input){
+      navigate('/dichos')
+    }
+    else if (id){
+      navigate(`/dichos/${id}`)
+    } 
+    else {
+      console.log(input)
+    }
   };
 
   return (
