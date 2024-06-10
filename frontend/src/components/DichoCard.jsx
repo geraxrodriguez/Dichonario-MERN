@@ -1,13 +1,16 @@
-// import { useState } from "react";
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 const DichoComponent = ({ dicho }) => {
+  const [ showFullDescription, setShowFullDescription ] = useState(false);
+  const meaning = dicho.meaning.length > 90 ? dicho.meaning.substring(0, 40) + '...' : dicho.meaning ;
+  dicho = dicho.dicho.length > 30 ? dicho.dicho.substring (0, 30) + '...' : dicho.dicho ;
   return (
     <div className="bg-white rounded-xl shadow-md relative">
       <div className="p-4">
         <Link to={`/dichos/${dicho._id}`}>
-          <h3 className="text-2xl font-bold">{dicho.dicho}</h3>
-          <p className="mt-2 text-sm">lorem ipsuma;sd;alksdfjjja;sdlkjfa;lsdkjfa;lsdkfj;alksdjf;laksdjf;laksdjf;laksdjf;alksdjf;alsdjf;aljdf;alkdfj;alskdjf;asldkfj</p>
+          <h3 className="text-2xl font-bold">{dicho}</h3>
+          <p className="mt-2 text-sm">{meaning}</p>
         </Link>
 
         {/* <div className="mb-5">
