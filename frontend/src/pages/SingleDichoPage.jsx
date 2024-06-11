@@ -13,7 +13,6 @@ const SingleDichoPage = () => {
             try {
                 // const res = await axios.get('https://dichonario.cyclic.app/dichos/${id}');
                 const res = await axios.get(`http://localhost:2222/dichos/${id}`);
-                console.log(res.data)
                 setDicho(res.data);
             } catch (error) {
                 console.log('Error fetching data', error);

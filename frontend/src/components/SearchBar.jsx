@@ -1,22 +1,24 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import SearchResultsList from './SearchResultsList';
 
 const SearchBar = () => {
   const [input, setInput] = useState("");
   const [results, setResults] = useState([]);
+  const [ selectedDicho, setSelectedDicho ] = useState({})
+  const navigate = useNavigate();
 
-  const fetchData = (value) => {
-    // fetch('https://dichonario.cyclic.app/dichos')
+  const fetchData = (input) => {
     fetch('http://localhost:2222/dichos')
       .then((response) => response.json())
       .then((json) => {
         const dichos = json.dichos;
         const results = dichos.filter(dicho => {
           return (
-            value &&                                  // if user has typed in a value
+            input &&                                  // if user has typed in a value
             dicho &&                                  // if anything in our dichos 
             dicho.dicho &&                            // if dicho has dicho property
-            dicho.dicho.toLowerCase().includes(value.toLowerCase()) // wouldn't we need to make the value lowercase too?
+            dicho.dicho.toLowerCase().includes(input.toLowerCase()) // wouldn't we need to make the value lowercase too?
           );
         });
         setResults(results);
@@ -25,16 +27,23 @@ const SearchBar = () => {
 
   const handleChange = value => {
     setInput(value);
-    fetchData(value);
+    fetchData(input);
   };
   
   const handleSelectSearchResult = result => {
-    setInput(result);
+    setSelectedDicho(result);
+    setInput(result.dicho);
     setResults([]);
   };
 
+  const submit = (e) => {
+    e.preventDefault();
+    const id = selectedDicho._id
+    navigate(`/dichos/${id}`)
+  };
+
   return (
-    <form action='' className=''>
+    <form onSubmit={submit} className=''>
   
       {/* INPUT FIELD */}
       <input
