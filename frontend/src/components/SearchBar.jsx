@@ -6,15 +6,17 @@ const SearchBar = () => {
   const [results, setResults] = useState([]);
 
   const fetchData = (value) => {
-    fetch("https://jsonplaceholder.typicode.com/users")
+    // fetch('https://dichonario.cyclic.app/dichos')
+    fetch('http://localhost:2222/dichos')
       .then((response) => response.json())
       .then((json) => {
-        const results = json.filter((user) => {
+        const dichos = json.dichos;
+        const results = dichos.filter(dicho => {
           return (
-            value &&                               // if user has typed in a value
-            user &&                                //  
-            user.name &&                           // if user has a name property 
-            user.name.toLowerCase().includes(value) // wouldn't we need to make the value lowercase too?
+            value &&                                  // if user has typed in a value
+            dicho &&                                  // if anything in our dichos 
+            dicho.dicho &&                            // if dicho has dicho property
+            dicho.dicho.toLowerCase().includes(value.toLowerCase()) // wouldn't we need to make the value lowercase too?
           );
         });
         setResults(results);
@@ -25,30 +27,43 @@ const SearchBar = () => {
     setInput(value);
     fetchData(value);
   };
+  
+  const handleSelectSearchResult = result => {
+    setInput(result);
+    setResults([]);
+  };
 
   return (
     <form action='' className=''>
-
+  
+      {/* INPUT FIELD */}
       <input
         className="border rounded-lg w-full py-1 px-5 mb-1 text-2xl required"
         placeholder="Search dichos..."
         value={input}
         onChange={(e) => handleChange(e.target.value)}
       />
-
-      {results && results.length > 0 && <SearchResultsList results={results} />}
-
+  
+      {/* SEARCH RESULTS LIST */}
+      { results && 
+        results.length > 0 && 
+        <SearchResultsList results={results} onSelectResult={handleSelectSearchResult} />
+      }
+  
+      {/* BUTTONS */}
       <div className="w-full flex space-x-2 justify-center mt-3">
         <button type="submit" className="bg-indigo-500 text-white rounded-md px-3 py-2">
           Search
         </button>
-        <button className="bg-indigo-500 text-white rounded-md px-3 py-2">
+        {/* <button className="bg-indigo-500 text-white rounded-md px-3 py-2">
           Dicho of the Day
-        </button>
+        </button> */}
       </div>
+  
     </form>
-
+  
   )
-}
+};
 
-export default SearchBar
+
+export default SearchBar;

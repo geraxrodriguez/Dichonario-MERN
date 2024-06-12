@@ -21,7 +21,7 @@ const Hero = ({
                         {subtitle}
                     </h2>
                     <p className="my-4 text-2xl text-white">
-                        Now, you too, can "jaja"!
+                        {/* Now, you too, can "jaja"! */}
                     </p>
                 </div>
 

@@ -3,12 +3,6 @@ const Dicho = require('../models/Dicho')
 const validator = require('validator');
 
 module.exports = {
-    getIndex: (req, res) => {
-        res.render('index.ejs')
-    },
-    getFormulario: (req, res) => {
-        res.render('agrega.ejs', { messages: req.flash() })
-    },
     getDichos: async (req, res) => {
         try {
             const dichos = await Dicho.find() // find method w/out args returns all documents in collection
@@ -21,7 +15,6 @@ module.exports = {
             res.status(500).send('Internal Server Error');
         }
     },
-
     // GET SINGLE DICHO
     getDicho: async (req, res) => {
         try {
@@ -32,11 +25,11 @@ module.exports = {
             res.status(500).send('Internal Server Error');
         }
     },
-
+    // SUBMIT DICHO FORM
     submitDicho: async (req, res) => {
         try {
-            console.log('We reached the createSub method')
-            console.log(req.body)
+            // console.log('We reached the createSub method')
+            // console.log(req.body)
             const { dicho, literalMeaning, actualMeaning, examples, related, comments } = req.body
             const sub = await Sub.create({
                 dicho,
