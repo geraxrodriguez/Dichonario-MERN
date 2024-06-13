@@ -1,12 +1,14 @@
 import React  from 'react';
 import SearchResult from './SearchResult';
 
-const SearchResultsList = ({ results, onSelectResult }) => {
+const SearchResultsList = ({ searchResults, selectSearchResult }) => {
     return (
     <div className="bg-white flex flex-col max-h-80 rounded-lg overflow-y-auto mt- max-h-64">
-        {results.map((result, id) => {
-            return <SearchResult key={id} result={result} onSelect={onSelectResult} />;
-        })}
+        { 
+            searchResults.map((searchResult, index) => {
+                return <SearchResult key={index} searchResult={searchResult} selectSearchResult={selectSearchResult} />;
+            }) 
+        }
     </div>
     )
 }

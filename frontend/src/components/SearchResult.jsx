@@ -1,12 +1,12 @@
 import React from 'react'
 
-const SearchResult = ({ result, onSelect }) => {
+const SearchResult = ({ searchResult, selectSearchResult }) => {
   return (
     <div 
         className='px-1 py-2 hover:bg-gray-200 hover:cursor-pointer'
-        onClick={() => onSelect(result)}    
+        onClick={() => selectSearchResult(searchResult)}    
     >
-        {result.dicho}
+        {searchResult.dicho}
     </div>
   )
 }

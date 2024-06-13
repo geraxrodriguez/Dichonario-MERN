@@ -3,9 +3,9 @@ import { useNavigate } from 'react-router-dom';
 import SearchResultsList from './SearchResultsList';
 
 const SearchBar = () => {
-  const [input, setInput] = useState("");
-  const [results, setResults] = useState([]);
-  const [ selectedDicho, setSelectedDicho ] = useState({})
+  const [ input, setInput ] = useState("");
+  const [ searchResults, setSearchResults ] = useState([]);
+  // const [ selectedDicho, setSelectedDicho ] = useState({})
   const navigate = useNavigate();
 
   const fetchData = (input) => {
@@ -13,7 +13,7 @@ const SearchBar = () => {
       .then((response) => response.json())
       .then((json) => {
         const dichos = json.dichos;
-        const results = dichos.filter(dicho => {
+        const searchResults = dichos.filter(dicho => {
           return (
             input &&                                  // if user has typed in a value
             dicho &&                                  // if anything in our dichos 
@@ -21,7 +21,7 @@ const SearchBar = () => {
             dicho.dicho.toLowerCase().includes(input.toLowerCase()) // wouldn't we need to make the value lowercase too?
           );
         });
-        setResults(results);
+        setSearchResults(searchResults);
       })
   };
 
@@ -33,24 +33,28 @@ const SearchBar = () => {
     fetchData(input);
   };
   
-  const handleSelectSearchResult = result => {
-    setSelectedDicho(result);
-    setInput(result.dicho);
-    setResults([]);
+  const selectSearchResult = selectedSearchResult => {
+    // setSelectedDicho(result);
+    // setResults([]);
+    // setInput(result);
+    // console.log(selectedSearchResult)
+    const id = selectedSearchResult._id
+    navigate(`/dichos/${id}`)
   };
 
   const submit = (e) => {
     e.preventDefault();
-    const id = selectedDicho._id
-    if (!input){
-      navigate('/dichos')
-    }
-    else if (id){
-      navigate(`/dichos/${id}`)
-    } 
-    else {
-      console.log(input)
-    }
+    console.log(input)
+    // const id = selectedDicho._id
+    // if (!input){
+    //   navigate('/dichos')
+    // }
+    // else if (id){
+    //   navigate(`/dichos/${id}`)
+    // } 
+    // else {
+    //   console.log(input)
+    // }
   };
 
   return (
@@ -65,9 +69,9 @@ const SearchBar = () => {
       />
   
       {/* SEARCH RESULTS LIST */}
-      { results && 
-        results.length > 0 && 
-        <SearchResultsList results={results} onSelectResult={handleSelectSearchResult} />
+      { searchResults && 
+        searchResults.length > 0 && 
+        <SearchResultsList searchResults={searchResults} selectSearchResult={selectSearchResult} />
       }
   
       {/* BUTTONS */}
