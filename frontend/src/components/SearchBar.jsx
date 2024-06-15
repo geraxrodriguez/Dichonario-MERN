@@ -5,8 +5,8 @@ import SearchResultsList from './SearchResultsList';
 const SearchBar = () => {
   const [ input, setInput ] = useState("");
   const [ searchResults, setSearchResults ] = useState([]);
-  // const [ selectedDicho, setSelectedDicho ] = useState({})
   const navigate = useNavigate();
+  // const [ selectedDicho, setSelectedDicho ] = useState({})
 
   const fetchData = (input) => {
     fetch('http://localhost:2222/dichos')
@@ -34,27 +34,32 @@ const SearchBar = () => {
   };
   
   const selectSearchResult = selectedSearchResult => {
+    const id = selectedSearchResult._id
+    navigate(`/dichos/${id}`)
     // setSelectedDicho(result);
     // setResults([]);
     // setInput(result);
     // console.log(selectedSearchResult)
-    const id = selectedSearchResult._id
-    navigate(`/dichos/${id}`)
   };
 
   const submit = (e) => {
     e.preventDefault();
-    console.log(input)
-    // const id = selectedDicho._id
-    // if (!input){
-    //   navigate('/dichos')
-    // }
-    // else if (id){
-    //   navigate(`/dichos/${id}`)
-    // } 
-    // else {
-    //   console.log(input)
-    // }
+    if (!input) { return; }
+    
+    // want to make get request for matching dicho(s)
+    // searchResults is an array that contains our list of search results in format of [ {_id, dicho}, {_id, dicho}, ... ]
+    // if our array only has one element, our user is looking for that array
+    // let's check if it's an exact match, if it is then we can show the dicho page for that dicho
+    
+    // access first searchResult
+    // if input and dicho from search result are match, navigate to that dicho's page
+    // else, navigate to 'results matching "dicho"'
+    if ( searchResults.length === 1 && input === searchResults[0].dicho ) {
+      navigate(`/dichos/${searchResults[0]._id}`)
+    }
+    else {
+      navigate(`/search?q=${input}`, { state: { input, searchResults } });
+    }
   };
 
   return (
