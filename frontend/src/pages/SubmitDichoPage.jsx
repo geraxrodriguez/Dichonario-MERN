@@ -1,12 +1,13 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import ExamplesSection from '../components/ExamplesSection'
 import axios from 'axios';
 
 const SubmitDichoPage = () => {
     const [dicho, setDicho] = useState('');
     const [literalMeaning, setLiteralMeaning] = useState('');
     const [actualMeaning, setActualMeaning] = useState('');
-    const [examples, setExamples] = useState('');
+    const [examples, setExamples] = useState(['']);
     const [related, setRelated] = useState('');
     const [comments, setComments] = useState('');
 
@@ -16,7 +17,6 @@ const SubmitDichoPage = () => {
     // FUNCTION FOR SUBMITTING DICHO
     const submitDicho = (e) => {
         e.preventDefault(); // prevent default form submission
-        console.log('submitting dicho')
         const newDicho = {
             dicho,
             literalMeaning,
@@ -30,12 +30,31 @@ const SubmitDichoPage = () => {
             .post('http://localhost:2222/submit-dicho', newDicho)
             .then(() => {
                 console.log('Dicho submitted successfully.')
-                navigate('/success');
+                // navigate('/success');
                 // window.location.reload()
             })
             .catch((error) => {
                 console.log(error);
             })
+    };
+
+    // Functions for Example(s) sub-section
+    const addExample = () => {
+        setExamples([...examples, '']); // Add a new empty example
+    };
+
+    const deleteExample = (index) => {
+        const newExamples = [...examples]
+        newExamples.splice(index, 1)
+        setExamples(newExamples);              // Delete example
+        //console.log(newExamples.splice(index, 1)) // logs array of removed elements
+        //console.log(newExamples)                  // logs array of remaining elements
+    };
+
+    const handleChange = (index, value) => {
+        const newExamples = [...examples];
+        newExamples[index] = value;
+        setExamples(newExamples);
     };
     return (
         <>
@@ -53,7 +72,7 @@ const SubmitDichoPage = () => {
                                     type="text"
                                     id="dicho"
                                     name="dicho"
-                                    className="border rounded w-full py-2 px-3 mb-2"
+                                    className="border border-gray-400 rounded w-full py-2 px-3 mb-2"
                                     placeholder='"Se me fue el avion"'
                                     required
                                     value={dicho}
@@ -71,7 +90,7 @@ const SubmitDichoPage = () => {
                                 <textarea
                                     id="literalMeaning"
                                     name="literalMeaning"
-                                    className="border rounded w-full py-2 px-3"
+                                    className="border border-gray-400 rounded w-full py-2 px-3"
                                     rows="3"
                                     placeholder='"The plane without left me"'
                                     required
@@ -90,7 +109,7 @@ const SubmitDichoPage = () => {
                                 <textarea
                                     id="actualMeaning"
                                     name="actualMeaning"
-                                    className="border rounded w-full py-2 px-3"
+                                    className="border border-gray-400 rounded w-full py-2 px-3"
                                     rows="3"
                                     placeholder='"I missed it. I was not paying attention"'
                                     required
@@ -100,13 +119,33 @@ const SubmitDichoPage = () => {
                             </div>
 
                             {/* Examples  */}
-                            <div className="mb-4">
+                            <div className="mb-4 border border-gray-400 rounded w-full py-2 px-3 mb-2">
                                 <label
                                     htmlFor="examples"
                                     className="block text-gray-700 font-bold mb-2"
                                 >Example(s)</label
                                 >
-                                <textarea
+                                {examples.map((example, index) => (
+                                    <div key={index} className="example-field">
+                                        <input
+                                            type="text"
+                                            value={example}
+                                            onChange={(e) => handleChange(index, e.target.value)}
+                                            className="example-input"
+                                            placeholder={`Example ${index + 1}`}
+                                            id='examples'
+                                            name='examples'
+                                        />
+                                        <button type="button" onClick={() => deleteExample(index)} className="add-example-btn">
+                                            -
+                                        </button>
+                                    </div>
+                                ))}
+
+                                <button type="button" onClick={addExample} className="add-example-btn">
+                                    +
+                                </button>
+                                {/* <textarea
                                     id="examples"
                                     name="examples"
                                     className="border rounded w-full py-2 px-3"
@@ -115,11 +154,12 @@ const SubmitDichoPage = () => {
                                     required
                                     value={examples}
                                     onChange={(e) => setExamples(e.target.value)}
-                                ></textarea>
+                                ></textarea> */}
+
                             </div>
 
                             {/* Related */}
-                            <div className="mb-4">
+                            <div className="mb-4 border border-gray-400 rounded w-full py-2 px-3">
                                 <label
                                     htmlFor="related"
                                     className="block text-gray-700 font-bold mb-2"
