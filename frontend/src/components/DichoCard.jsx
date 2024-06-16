@@ -7,7 +7,7 @@ const DichoComponent = ({ dicho }) => {
       <div className="p-4">
         <Link to={`/dichos/${dicho._id}`}>
           <h3 className="text-2xl font-bold">{dicho.dicho}</h3>
-          <p className="mt-2 text-sm">{dicho.meaning}</p>
+          <p className="mt-2 text-sm">lorem ipsuma;sd;alksdfjjja;sdlkjfa;lsdkjfa;lsdkfj;alksdjf;laksdjf;laksdjf;laksdjf;alksdjf;alsdjf;aljdf;alkdfj;alskdjf;asldkfj</p>
         </Link>
 
         {/* <div className="mb-5">

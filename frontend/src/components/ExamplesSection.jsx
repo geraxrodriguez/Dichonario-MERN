@@ -10,12 +10,13 @@ const examplesForm = () => {
 
   const deleteExample = (index) => {
     const newExamples = [...examples]
-    setExamples(newExamples);              // Delete example
+    newExamples.splice(index, 1)
     //console.log(newExamples.splice(index, 1)) // logs array of removed elements
     //console.log(newExamples)                  // logs array of remaining elements
+    setExamples(newExamples);              // Delete example
   };
 
-  const handleChange = (index, value) => {
+  const handleExamplesChange = (index, value) => {
     const newExamples = [...examples];
     newExamples[index] = value;
     setExamples(newExamples);
@@ -29,11 +30,9 @@ const examplesForm = () => {
           <input
             type="text"
             value={example}
-            onChange={(e) => handleChange(index, e.target.value)}
+            onChange={(e) => handleExamplesChange(index, e.target.value)}
             className="example-input"
             placeholder={`Example ${index + 1}`}
-            id='examples'
-            name='examples'
           />
           <button type="button" onClick={() => deleteExample(index)} className="add-example-btn">
             -

@@ -30,16 +30,16 @@ module.exports = {
         try {
             // console.log('We reached the createSub method')
             console.log(req.body)
-            // const { dicho, literalMeaning, actualMeaning, examples, related, comments } = req.body
-            // const sub = await Sub.create({
-            //     dicho,
-            //     literalMeaning,
-            //     actualMeaning,
-            //     examples,
-            //     related,
-            //     comments,
-            // })
-            // return res.status(201).send(sub);
+            const { dicho, literalMeaning, actualMeaning, examples, related, comments } = req.body
+            const sub = await Sub.create({
+                dicho,
+                literalMeaning,
+                actualMeaning,
+                examples,
+                related,
+                comments,
+            })
+            return res.status(201).send(sub);
         } catch (err) {
             console.error(err)
             res.status(500).send({ message: err.message });

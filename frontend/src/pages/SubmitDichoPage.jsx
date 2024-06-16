@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import ExamplesSection from '../components/ExamplesSection'
+import '../styles/ExamplesSection.css'
+// import ExamplesSection from '../components/ExamplesSection'
 import axios from 'axios';
 
 const SubmitDichoPage = () => {
@@ -30,8 +31,7 @@ const SubmitDichoPage = () => {
             .post('http://localhost:2222/submit-dicho', newDicho)
             .then(() => {
                 console.log('Dicho submitted successfully.')
-                // navigate('/success');
-                // window.location.reload()
+                navigate('/success');
             })
             .catch((error) => {
                 console.log(error);
@@ -143,23 +143,12 @@ const SubmitDichoPage = () => {
                                 ))}
 
                                 <button type="button" onClick={addExample} className="add-example-btn">
-                                    +
+                                    + Add Another Example
                                 </button>
-                                {/* <textarea
-                                    id="examples"
-                                    name="examples"
-                                    className="border rounded w-full py-2 px-3"
-                                    rows="3"
-                                    placeholder='"Me olvide de los frijoles. Estaba viendo la tele y se me fue el avion."'
-                                    required
-                                    value={examples}
-                                    onChange={(e) => setExamples(e.target.value)}
-                                ></textarea> */}
-
                             </div>
 
                             {/* Related */}
-                            <div className="mb-4 border border-gray-400 rounded w-full py-2 px-3">
+                            {/* <div className="mb-4 border border-gray-400 rounded w-full py-2 px-3">
                                 <label
                                     htmlFor="related"
                                     className="block text-gray-700 font-bold mb-2"
@@ -174,7 +163,7 @@ const SubmitDichoPage = () => {
                                     value={related}
                                     onChange={(e) => setRelated(e.target.value)}
                                 ></textarea>
-                            </div>
+                            </div> */}
 
                             {/* Comments */}
                             <div className="mb-4">
@@ -186,7 +175,7 @@ const SubmitDichoPage = () => {
                                 <textarea
                                     id="comments"
                                     name="comments"
-                                    className="border rounded w-full py-2 px-3"
+                                    className="border border-gray-400 rounded w-full py-2 px-3"
                                     rows="3"
                                     placeholder=''
                                     value={comments}
