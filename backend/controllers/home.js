@@ -25,12 +25,12 @@ module.exports = {
             res.status(500).send('Internal Server Error');
         }
     },
-    getDOTD: async (req, res) => {
+    surpriseMe: async (req, res) => {
         try {
-            console.log('reached DOTD')
-            const dotd = await Dicho.aggregate([{ $sample: { size: 1 } }]).exec();
-            const id = dotd[0]._id;
-            res.status(200).send(id)
+            // instead of accessing dicho using indexing, dicho[0]. We can destructure since theres only one dicho in returned array
+            const [ dicho ] = await Dicho.aggregate([{ $sample: { size: 1 } }]);
+            const id = dicho._id;
+            res.status(200).send(id);
         } catch (error) {
             console.log(error);
             res.status(500).send('Internal Server Error')

@@ -6,7 +6,7 @@ const homeController = require('../controllers/home')
 // router.get('/agrega', homeController.getFormulario)
 router.get('/dichos', homeController.getDichos)
 router.get('/dichos/:id', homeController.getDicho)
-router.get('/getDOTD', homeController.getDOTD)
+router.get('/surprise-me', homeController.surpriseMe)
 
 // router for creating dicho
 router.post('/submit-dicho', homeController.submitDicho)
