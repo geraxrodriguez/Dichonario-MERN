@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import SearchResultsList from './SearchResultsList';
+import axios from 'axios';
 
 const SearchBar = () => {
   const [ input, setInput ] = useState("");
@@ -62,6 +63,16 @@ const SearchBar = () => {
     }
   };
 
+  const getDOTD = async () => {
+    try {
+      const res = await axios.get('http://localhost:2222/getDOTD');
+      const id = res.data
+      navigate(`/dichos/${id}`)
+    } catch (error) {
+      console.log('Error fetching DOTD\'s ID')
+    }
+  };
+
   return (
     <form onSubmit={submit} className=''>
   
@@ -84,9 +95,10 @@ const SearchBar = () => {
         <button type="submit" className="bg-indigo-500 text-white rounded-md px-3 py-2">
           Search
         </button>
-        {/* <button className="bg-indigo-500 text-white rounded-md px-3 py-2">
-          Dicho of the Day
-        </button> */}
+
+        <div className="bg-indigo-500 text-white rounded-md px-3 py-2">
+          <Link onClick={getDOTD}> Dicho of the Day </Link>
+        </div>
       </div>
   
     </form>

@@ -25,6 +25,17 @@ module.exports = {
             res.status(500).send('Internal Server Error');
         }
     },
+    getDOTD: async (req, res) => {
+        try {
+            console.log('reached DOTD')
+            const dotd = await Dicho.aggregate([{ $sample: { size: 1 } }]).exec();
+            const id = dotd[0]._id;
+            res.status(200).send(id)
+        } catch (error) {
+            console.log(error);
+            res.status(500).send('Internal Server Error')
+        }
+    },
     // SUBMIT DICHO FORM
     submitDicho: async (req, res) => {
         try {

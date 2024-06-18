@@ -6,9 +6,10 @@ const homeController = require('../controllers/home')
 // router.get('/agrega', homeController.getFormulario)
 router.get('/dichos', homeController.getDichos)
 router.get('/dichos/:id', homeController.getDicho)
-router.post('/dichos/:id/suggestion', homeController.postSuggestion)
+router.get('/getDOTD', homeController.getDOTD)
 
 // router for creating dicho
 router.post('/submit-dicho', homeController.submitDicho)
+router.post('/dichos/:id/suggestion', homeController.postSuggestion)
 
 module.exports = router
