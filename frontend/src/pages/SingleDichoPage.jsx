@@ -21,17 +21,16 @@ const SingleDichoPage = () => {
 
     return (
         <>
-            <section className="bg-indigo-50 h-5/6 overflow-auto">
-                <div className="container m-auto py-10 px-6 border border-black">
-                    <div className="grid grid-cols-1 md:grid-cols-70/30 w-full gap-6 border border-black ">
+            <section className="bg-indigo-50 flex flex-1 justify-center">
+                <div className="container py-10 px-6 border border-black">
 
-                        <div className="bg-white p-6 rounded-lg shadow-md text-center">
+                        <div className="bg-white p-5 rounded-xl shadow-md text-center">
                             <h1 className="text-3xl font-bold">
                                 {dicho.dicho}
                             </h1>
                         </div>
 
-                        <div className="bg-white p-6 rounded-lg shadow-md mt-6 text-left">
+                        <div className="bg-white p-6 rounded-xl shadow-md mt-4 text-left">
                             <h3 className="text-indigo-800 text-lg font-bold mb-1">
                                 Literal Translation:
                             </h3>
@@ -56,7 +55,6 @@ const SingleDichoPage = () => {
 
                         </div>
 
-                    </div>
                 </div>
             </section>
         </>
