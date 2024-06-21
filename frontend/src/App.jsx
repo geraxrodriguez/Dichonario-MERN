@@ -7,6 +7,7 @@ import SingleDichoPage from './pages/SingleDichoPage';
 import SubmitDichoPage from './pages/SubmitDichoPage';
 import SuccessPage from './pages/SuccessPage';
 import SearchResultsPage from './pages/SearchResultsPage';
+import Test from './pages/Test';
 import './App.css';
 
 const App = () => {
@@ -19,8 +20,8 @@ const App = () => {
         <Route path="/submit-dicho" element={< SubmitDichoPage />} />
         <Route path="/success" element={< SuccessPage />} />
         <Route path="/search" element={<SearchResultsPage />} />
-        {/* <Route path="/test" element={<TestPage />} /> */}
       </Route>
+      <Route path="/test" element={<Test />} />
     </Routes>
   );
 };

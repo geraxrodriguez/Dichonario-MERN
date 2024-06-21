@@ -1,0 +1,31 @@
+.background {
+    height: 100vh;
+    width: 100%;
+    position: fixed;
+    background-color: black;
+    display: flex;
+    flex-direction: column;
+    z-index: -1;
+    overflow: auto;
+}
+
+.navbar, .footer, .main {
+    color: black;
+    background-color: white;
+    font-size: xx-large;
+}
+
+.navbar {
+    color: black;
+    background-color: white;
+    height: 75px;
+}
+
+.main {
+    background-color: orange;
+    flex-grow: 1;
+}
+
+.footer {
+    height: 75px;
+}

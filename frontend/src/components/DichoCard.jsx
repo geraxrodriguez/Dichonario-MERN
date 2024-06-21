@@ -6,15 +6,15 @@ const DichoComponent = ({ dicho }) => {
                     ? dicho.meaning.substring(0, 40) + '...' 
                     : dicho.meaning ;
 
-  dicho = dicho.dicho.length > 30 
+  dicho.dicho = dicho.dicho.length > 30 
                     ? dicho.dicho.substring (0, 30) + '...' 
                     : dicho.dicho ;
 
   return (
-    <div className="bg-white rounded-xl shadow-md relative flex flex-col justify-center">
+    <div className="hover:cursor-pointer bg-white rounded-xl shadow-md relative flex flex-col justify-center">
       <div className="p-4">
         <Link to={`/dichos/${dicho._id}`}>
-          <h3 className="text-2xl font-bold">{dicho}</h3>
+          <h3 className="text-2xl font-bold">{dicho.dicho}</h3>
           <p className="mt-2 text-sm">{meaning}</p>
         </Link>
       </div>

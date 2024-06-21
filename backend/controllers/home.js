@@ -9,7 +9,6 @@ module.exports = {
             res.status(200).json({
                 dichos,
             });
-            console.log('dichos sent')
         } catch (err) {
             console.error('Error fetching dichos:', err);
             res.status(500).send('Internal Server Error');

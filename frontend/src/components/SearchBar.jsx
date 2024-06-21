@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import SearchResultsList from './SearchResultsList';
 import axios from 'axios';
+import styles from '../styles/Home.module.css';
 
 const SearchBar = () => {
   const [ input, setInput ] = useState("");
@@ -63,9 +64,10 @@ const SearchBar = () => {
     }
   };
 
-  const getDOTD = async () => {
+  const surpriseMe = async () => {
     try {
-      const res = await axios.get('http://localhost:2222/getDOTD');
+      console.log('surprise me clicked')
+      const res = await axios.get('http://localhost:2222/surprise-me');
       const id = res.data
       navigate(`/dichos/${id}`)
     } catch (error) {
@@ -74,7 +76,7 @@ const SearchBar = () => {
   };
 
   return (
-    <form onSubmit={submit} className=''>
+    <form onSubmit={submit} className={styles.searchBar}>
   
       {/* INPUT FIELD */}
       <input
@@ -97,7 +99,7 @@ const SearchBar = () => {
         </button>
 
         <div className="bg-indigo-500 text-white rounded-md px-3 py-2">
-          <Link onClick={getDOTD}> Dicho of the Day </Link>
+          <Link onClick={surpriseMe}> Surprise Me </Link>
         </div>
       </div>
   
