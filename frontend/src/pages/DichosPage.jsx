@@ -20,10 +20,9 @@ const Dichos = () => {
 
   return (
     // <section className="bg-blue-50 px-4 py-6 h-5/6 overflow-auto">
-    <section className="bg-blue-50 px-4 py-6">
-      <section className="bg-blue-50 px-4 pb-10">
-        <div className="container-xl lg:container m-auto px-4">
+    <section className="flex flex-1 justify-center bg-blue-50 px-4 py-6">
 
+        <div className="px-4">
           <h2 className="text-3xl font-bold mb-6 text-center">
             Los Dichos
           </h2>
@@ -32,31 +31,9 @@ const Dichos = () => {
             {dichos.map((dicho) => (
               <DichoCard key={dicho._id} dicho={dicho} />
             ))}
-            {dichos.map((dicho) => (
-              <DichoCard key={dicho._id} dicho={dicho} />
-            ))}
-            {dichos.map((dicho) => (
-              <DichoCard key={dicho._id} dicho={dicho} />
-            ))}
-            {dichos.map((dicho) => (
-              <DichoCard key={dicho._id} dicho={dicho} />
-            ))}
-            {dichos.map((dicho) => (
-              <DichoCard key={dicho._id} dicho={dicho} />
-            ))}
-            {dichos.map((dicho) => (
-              <DichoCard key={dicho._id} dicho={dicho} />
-            ))}
-            {dichos.map((dicho) => (
-              <DichoCard key={dicho._id} dicho={dicho} />
-            ))}
-            {dichos.map((dicho) => (
-              <DichoCard key={dicho._id} dicho={dicho} />
-            ))}
           </div>
-
         </div>
-      </section>
+
     </section>
   )
 }
