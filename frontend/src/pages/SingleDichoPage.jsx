@@ -22,7 +22,7 @@ const SingleDichoPage = () => {
     const submitSuggestions = async (e) => {
         e.preventDefault();
         try {
-            const res = await axios.post(`http://localhost:2222/dichos/${id}/suggestions`, suggestions)
+            const res = await axios.post(`http://localhost:2222/dichos/${id}/suggestions`, { suggestions, })
             console.log(res.data)
         } catch (error) {
             console.log('Error submitting form', error)
