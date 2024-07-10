@@ -10,6 +10,6 @@ router.get('/surprise-me', homeController.surpriseMe)
 
 // router for creating dicho
 router.post('/submit-dicho', homeController.submitDicho)
-router.post('/dichos/:id/suggestion', homeController.postSuggestion)
+router.post('/dichos/:id/suggestions', homeController.postSuggestions)
 
 module.exports = router

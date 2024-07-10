@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import axios from 'axios';
-// import { FaArrowLeft, FaMapMarker } from 'react-icons/fa';
 
 const SingleDichoPage = () => {
     const [dicho, setDicho] = useState({});
+    const [suggestions, setSuggestions] = useState('')
     const { id } = useParams();
 
     useEffect(() => {
@@ -18,6 +18,16 @@ const SingleDichoPage = () => {
         };
         getDicho();
     }, []); // ends useEffect()
+
+    const submitSuggestions = async (e) => {
+        e.preventDefault();
+        try {
+            const res = await axios.post(`http://localhost:2222/dichos/${id}/suggestions`, suggestions)
+            console.log(res.data)
+        } catch (error) {
+            console.log('Error submitting form', error)
+        }
+    };
 
     return (
         <>
@@ -52,7 +62,7 @@ const SingleDichoPage = () => {
                             {dicho.example}
                         </p>
 
-                        <form className="text-base/5">
+                        <form className="text-lg/6" onSubmit={submitSuggestions}>
                             <label
                                 htmlFor="suggestions"
                                 className="block text-gray-700"
@@ -64,11 +74,11 @@ const SingleDichoPage = () => {
                                 className="border border-gray-500 rounded w-full py-1 px-1 resize-none"
                                 rows="2"
                                 required
-                            // value={actualMeaning}
-                            // onChange={(e) => setActualMeaning(e.target.value)}
+                                value={suggestions}
+                                onChange={(e) => setSuggestions(e.target.value)}
                             ></textarea>
                             <button
-                                className="bg-indigo-500 hover:bg-amber-500 text-white text-sm px-1"
+                                className="bg-indigo-500 hover:bg-amber-500 text-white text-base px-1"
                                 type="submit"
                             >
                                 Submit

@@ -56,13 +56,13 @@ module.exports = {
         }
     },
 
-    postSuggestion: async (req, res) => {
+    postSuggestions: async (req, res) => {
         try {
-            await Dicho.updateOne(
-                { _id: req.params.id },
-                { $push: { suggestions: req.body.suggestion } }
-            );
-            res.redirect(`/dichos/${req.params.id}`)
+            // await Dicho.updateOne(
+            //     { _id: req.params.id },
+            //     { $push: { suggestions: req.body.suggestion } }
+            // );
+            res.status(201).send('suggestion received')
         } catch (err) {
             console.error(err);
         };
