@@ -9,11 +9,11 @@ const SuccessPage = () => {
             <h1 className={styles.header}>
                 Thank you for your submission :)
             </h1>
-            <NavLink className={styles.submitAnotherLink} to="/submit-dicho"> {/* flex-shrink-0 => item will not shrink */}
-                Click here to submit another dicho.
+            <NavLink className={styles.submitAnotherLink} to="/"> {/* flex-shrink-0 => item will not shrink */}
+                Home
             </NavLink>
             <NavLink className={styles.browseDichosLink} to="/dichos"> {/* flex-shrink-0 => item will not shrink */}
-                Click here to browse dichos.
+                Go to dichos.
             </NavLink>
         </>
     )

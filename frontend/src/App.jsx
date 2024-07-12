@@ -7,6 +7,7 @@ import SingleDichoPage from './pages/SingleDichoPage';
 import SubmitDichoPage from './pages/SubmitDichoPage';
 import SuccessPage from './pages/SuccessPage';
 import SearchResultsPage from './pages/SearchResultsPage';
+import AdminCreateDichoPage from './pages/AdminCreateDichoPage';
 import './App.css';
 
 const App = () => {
@@ -20,6 +21,7 @@ const App = () => {
         <Route path="/success" element={< SuccessPage />} />
         <Route path="/search" element={<SearchResultsPage />} />
       </Route>
+      <Route path="/admin/create-dicho" element={< AdminCreateDichoPage />}/>
     </Routes>
   );
 };
