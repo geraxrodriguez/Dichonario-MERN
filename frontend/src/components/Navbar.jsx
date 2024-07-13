@@ -15,32 +15,32 @@ const Navbar = () => {
 
         <div className='flex h-20 items-center justify-between'>
           
-          <div className="flex flex-1 items-center justify-center md:items-stretch md:justify-start"> {/* flex-1 items grow and shrink to distribute space evenly */}
+          <div className="flex flex-1 items-center justify-center  md:items-stretch md:justify-start"> {/* flex-1 items grow and shrink to distribute space evenly */}
 
             <NavLink className="flex items-center mr-2" to="/"> {/* flex-shrink-0 => item will not shrink */}
               <span className="hidden md:block text-white text-2xl font-bold"> {/* hidden md:block => hides element until md breakpoint is reached, typically >= 768px */}
                 Dichonario
               </span>
-              <span className="md:hidden mb-1 w-auto text-white text-5xl font-bold"> {/* hi dden md:block => hides element until md breakpoint is reached, typically >= 768px */}
+              {/* <span className="md:hidden w-auto text-white text-4xl font-bold">  */}
+              <span id={styles.dnLetters}> 
                 DN
               </span>
 
             </NavLink>
 
-            <div className="md:ml-auto">
-              {/* <div className="flex space-x-1"> */}
+            {/* <div className="md:ml-auto"> */}
               <div className={styles.linkContainer}>
                 <NavLink to="/" className={linkClass}>
                   Home
                 </NavLink>
-                <NavLink to="/dichos" className={linkClass}>
+                <NavLink to="/dichos" id={styles.dichoLink} className={linkClass}>
                   Dichos
                 </NavLink>
                 <NavLink to="/submit-dicho" className={linkClass}>
                   Submit a Dicho
                 </NavLink>
               </div>
-            </div>
+            {/* </div> */}
 
           </div>
 

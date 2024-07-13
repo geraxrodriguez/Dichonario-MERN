@@ -11,7 +11,7 @@
     margin: 0 auto;
     max-width: 56rem;
     /* border: 1px solid black; */
-    min-width: 23rem;
+    min-width: 23.125rem;
     
     @media (min-width: 768px) {
         min-width: 24rem;
@@ -23,10 +23,22 @@
     }
 }
 .linkContainer {
-    display: flex;
-    margin-left: 0.25rem;
-
-    @media (max-width: 375px) {
-        margin: 0 .5rem 0 0;
+    display: flex;    
+    @media (min-width: 768px) {
+        margin: 0 0 0 auto;
+    }
+}
+#dichoLink{
+    @media (max-width: 768px){
+        margin: 0 .25rem;
+    }
+}
+#dnLetters {
+    width: auto;
+    color: white;
+    font-size: 2.5rem;
+    font-weight: bold;
+    @media (min-width: 768px) {
+        display: none;
     }
 }
