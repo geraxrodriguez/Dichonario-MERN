@@ -114,4 +114,14 @@ module.exports = {
       res.status(500).send('Internal Server Error');
     }; // end catch block
   },
+
+  // CREATE DICHO
+  createDicho: async (req, res) => {
+    try {
+      console.log('createDicho reached')
+    } catch {
+      console.log(error);
+      res.status(500).send('Internal Server Error')
+    }
+  },
 };

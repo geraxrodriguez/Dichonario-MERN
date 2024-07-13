@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../styles/ExamplesSection.css'
-// import ExamplesSection from '../components/ExamplesSection'
 import axios from 'axios';
 
 const SubmitDichoPage = () => {
@@ -28,7 +27,7 @@ const SubmitDichoPage = () => {
         };
         console.log("New Dicho:", newDicho)
         axios
-            .post('http://localhost:2222/submit-dicho', newDicho)
+            .post('http://localhost:2222/admin/create-dicho', newDicho)
             .then(() => {
                 console.log('Dicho submitted successfully.')
                 navigate('/success');
@@ -65,7 +64,9 @@ const SubmitDichoPage = () => {
 
                     <div className="bg-white px-6 py-8 mb-4 shadow-md rounded-md border m-4 md:m-0">
                         <form onSubmit={submitDicho}>
-                            <h2 className="text-3xl text-center font-semibold mb-6">Submit a Dicho</h2>
+                            <h2 className="text-3xl text-center font-semibold mb-6">
+                                YOU ARE CREATING A NEW DICHO. UPON SUBMITTING, IT WILL BE LIVE. TREAD CAREFULLY.
+                            </h2>
 
                             <div className="mb-4">
                                 <label className="block text-gray-700 font-bold mb-2"
