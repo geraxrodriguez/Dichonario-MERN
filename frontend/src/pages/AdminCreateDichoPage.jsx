@@ -43,9 +43,11 @@ const SubmitDichoPage = () => {
     };
 
     const deleteExample = (index) => {
+        if (index === 0) { return; }           // user is only able to delete exampel field if there is more than one field
         const newExamples = [...examples]
         newExamples.splice(index, 1)
         setExamples(newExamples);              // Delete example
+
         //console.log(newExamples.splice(index, 1)) // logs array of removed elements
         //console.log(newExamples)                  // logs array of remaining elements
     };
@@ -77,7 +79,6 @@ const SubmitDichoPage = () => {
                                     id="dicho"
                                     name="dicho"
                                     className="border border-gray-400 rounded w-full py-2 px-3 mb-2"
-                                    placeholder='"Se me fue el avion"'
                                     required
                                     value={dicho}
                                     onChange={(e) => setDicho(e.target.value)}
@@ -96,7 +97,6 @@ const SubmitDichoPage = () => {
                                     name="literalMeaning"
                                     className="border border-gray-400 rounded w-full py-2 px-3"
                                     rows="3"
-                                    placeholder='"The plane without left me"'
                                     required
                                     value={literalMeaning}
                                     onChange={(e) => setLiteralMeaning(e.target.value)}
@@ -115,7 +115,6 @@ const SubmitDichoPage = () => {
                                     name="actualMeaning"
                                     className="border border-gray-400 rounded w-full py-2 px-3"
                                     rows="3"
-                                    placeholder='"I missed it. I was not paying attention"'
                                     required
                                     value={actualMeaning}
                                     onChange={(e) => setActualMeaning(e.target.value)}
@@ -131,7 +130,16 @@ const SubmitDichoPage = () => {
                                 >
                                 {examples.map((example, index) => (
                                     <div key={index} className="example-field">
-                                        <input
+                                        <textarea
+                                            className="example-input border border-gray-400"
+                                            id="examples"
+                                            name="examples"
+                                            rows="1"
+                                            required
+                                            value={example}
+                                            onChange={(e) => handleChange(index, e.target.value)}
+                                        ></textarea>
+                                        {/* <input
                                             type="text"
                                             value={example}
                                             onChange={(e) => handleChange(index, e.target.value)}
@@ -139,7 +147,7 @@ const SubmitDichoPage = () => {
                                             placeholder={`Example ${index + 1}`}
                                             id='examples'
                                             name='examples'
-                                        />
+                                        /> */}
                                         <button type="button" onClick={() => deleteExample(index)} className="add-example-btn">
                                             -
                                         </button>
@@ -181,7 +189,6 @@ const SubmitDichoPage = () => {
                                     name="comments"
                                     className="border border-gray-400 rounded w-full py-0 px-3"
                                     rows="3"
-                                    placeholder=''
                                     value={comments}
                                     onChange={(e) => setComments(e.target.value)}
                                 ></textarea>

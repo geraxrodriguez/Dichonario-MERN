@@ -118,7 +118,25 @@ module.exports = {
   // CREATE DICHO
   createDicho: async (req, res) => {
     try {
-      console.log('createDicho reached')
+      // gets pieces of Dicho from req
+      const { 
+        dicho,
+        literalMeaning,
+        actualMeaning, 
+        examples,
+        related,
+        comments
+      } = req.body
+      // creates Dicho in database
+      await Dicho.create({
+        dicho,
+        literalMeaning,
+        actualMeaning, 
+        examples,
+        related,
+        comments
+      });
+      res.status(201).send('Dicho created')
     } catch {
       console.log(error);
       res.status(500).send('Internal Server Error')

@@ -44,6 +44,7 @@ const SubmitDichoPage = () => {
     };
 
     const deleteExample = (index) => {
+        if (index === 0) { return; }           // user is only able to delete exampel field if there is more than one field
         const newExamples = [...examples]
         newExamples.splice(index, 1)
         setExamples(newExamples);              // Delete example
