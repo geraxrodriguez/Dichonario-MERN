@@ -11,6 +11,10 @@
     padding: 8rem 0rem;
     max-width: 80rem;
     min-width: 24rem;
+
+    @media (max-width: 750px) {
+        padding-top: 5rem;
+    }
 }
 
 .h1 {
@@ -40,5 +44,8 @@
 
     @media (min-width: 640px) {
         padding: 0;
+    }
+    @media (max-width: 375px) {
+        margin: 0 0.25rem;
     }
 }

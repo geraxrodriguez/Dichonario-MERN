@@ -1,4 +1,5 @@
 import { NavLink } from 'react-router-dom';
+import styles from '../styles/Navbar.module.css'
 
 const Navbar = () => {
   const linkClass = ({ isActive }) =>
@@ -9,7 +10,7 @@ const Navbar = () => {
   return (
     <nav className='border-b border-indigo-500'>
 
-      <div className="mx-auto max-w-4xl min-w-96 lg:px-8 sm:px-6">
+      <div className="mx-auto max-w-4xl min-w-96 lg:px-8 sm:px-6 ">
 
         <div className='flex h-20 items-center justify-between'>
           
@@ -26,7 +27,8 @@ const Navbar = () => {
             </NavLink>
 
             <div className="md:ml-auto">
-              <div className="flex space-x-2">
+              {/* <div className="flex space-x-1"> */}
+              <div className={styles.linkContainer}>
                 <NavLink to="/" className={linkClass}>
                   Home
                 </NavLink>
