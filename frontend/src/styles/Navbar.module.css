@@ -7,6 +7,21 @@
     flex-direction: column;
     justify-content: center;
 }
+.outerContainer {
+    margin: 0 auto;
+    max-width: 56rem;
+    /* border: 1px solid black; */
+    min-width: 23rem;
+    
+    @media (min-width: 768px) {
+        min-width: 24rem;
+        padding: 0 1.5rem;
+    };
+
+    @media (min-width: 1024px) {
+        padding: 0 2rem;
+    }
+}
 .linkContainer {
     display: flex;
     margin-left: 0.25rem;

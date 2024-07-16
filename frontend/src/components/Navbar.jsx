@@ -10,7 +10,8 @@ const Navbar = () => {
   return (
     <nav className='border-b border-indigo-500'>
 
-      <div className="mx-auto max-w-4xl min-w-96 lg:px-8 sm:px-6 ">
+      {/* <div className="mx-auto max-w-4xl min-w-96 lg:px-8 sm:px-6 border border-black"> */}
+      <div className={styles.outerContainer}>
 
         <div className='flex h-20 items-center justify-between'>
           
