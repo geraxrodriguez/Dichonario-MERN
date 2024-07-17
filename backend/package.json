@@ -17,6 +17,7 @@
     "express-flash": "github:RGBboy/express-flash",
     "express-session": "^1.18.0",
     "express-validator": "^7.0.1",
+    "memorystore": "^1.6.7",
     "mongodb": "^6.3.0",
     "mongoose": "^8.0.3"
   }

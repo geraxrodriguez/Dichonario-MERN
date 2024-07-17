@@ -1,7 +1,8 @@
 const flash = require('express-flash')
 const session = require('express-session') 
+const MemoryStore = require('memorystore')(session)
 const express = require('express')
-const mongoose = require('mongoose')
+// const mongoose = require('mongoose')
 const connectDB = require('./config/database')
 const mainRoutes = require('./routes/mainRoutes')
 const adminRoutes = require('./routes/adminRoutes')
@@ -27,7 +28,10 @@ app.use(session({
     secret: 'secret key',
     resave: false,
     saveUninitialized: true,
-    cookie: { maxAge: 60000 }
+    cookie: { maxAge: 86400000 },
+    store: new MemoryStore({
+        checkPeriod: 86400000 // prune expired entires every 24h
+    }),
   }))
   
 app.use(flash());
