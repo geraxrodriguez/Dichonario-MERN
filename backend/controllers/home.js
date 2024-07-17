@@ -3,6 +3,9 @@ const Dicho = require('../models/Dicho')
 const validator = require('validator');
 
 module.exports = {
+    cron: (req, res) => {
+        res.status(201).send('ok')
+    },
     getDichos: async (req, res) => {
         try {
             const dichos = await Dicho.find() // find method w/out args returns all documents in collection
