@@ -9,6 +9,7 @@ const Dichos = () => {
     const getDichos = async () => {
       try {
         const res = await axios.get('http://localhost:2222/dichos');
+        // const res = await axios.get('https://dichonario.netlify.app/dichos');
         console.log(res.data.dichos);
         setDichos(res.data.dichos);
       } catch (error) {
