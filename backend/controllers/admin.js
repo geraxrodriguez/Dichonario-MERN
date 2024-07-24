@@ -125,8 +125,14 @@ module.exports = {
         actualMeaning, 
         examples,
         related,
-        comments
-      } = req.body
+        comments,
+        history,
+      } = req.body;
+
+      if (!history.length) {
+        history = 'No history yet for this dicho';
+      }
+
       // creates Dicho in database
       await Dicho.create({
         dicho,
@@ -134,10 +140,11 @@ module.exports = {
         actualMeaning, 
         examples,
         related,
-        comments
+        comments,
+        history,
       });
       res.status(201).send('Dicho created')
-    } catch {
+    } catch (error) {
       console.log(error);
       res.status(500).send('Internal Server Error')
     }
