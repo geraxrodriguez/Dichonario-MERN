@@ -10,6 +10,7 @@ const SubmitDichoPage = () => {
     const [examples, setExamples] = useState(['']);
     const [related, setRelated] = useState('');
     const [comments, setComments] = useState('');
+    const [history, setHistory] = useState('');
 
     // navigate use to redirect after submitting Dicho
     const navigate = useNavigate();
@@ -24,13 +25,14 @@ const SubmitDichoPage = () => {
             examples,
             related,
             comments,
+            history: history || 'No history yet for this dicho.',
         };
         console.log("New Dicho:", newDicho)
         axios
             .post('http://localhost:2222/admin/create-dicho', newDicho)
             .then(() => {
                 console.log('Dicho submitted successfully.')
-                navigate('/success');
+                // navigate('/success');
             })
             .catch((error) => {
                 console.log(error);
@@ -121,6 +123,23 @@ const SubmitDichoPage = () => {
                                 ></textarea>
                             </div>
 
+                            {/* History  */}
+                            <div className="mb-4">
+                                <label
+                                    htmlFor="history"
+                                    className="block text-gray-700 font-bold mb-2"
+                                >History and Origins</label
+                                >
+                                <textarea
+                                    id="history"
+                                    name="history"
+                                    className="border border-gray-400 rounded w-full py-2 px-3"
+                                    rows="3"
+                                    value={history}
+                                    onChange={(e) => setHistory(e.target.value)}
+                                ></textarea>
+                            </div>
+
                             {/* Examples  */}
                             <div className="mb-4 border border-gray-400 rounded w-full py-2 px-3 mb-2">
                                 <label
@@ -158,6 +177,7 @@ const SubmitDichoPage = () => {
                                     + Add Another Example
                                 </button>
                             </div>
+
 
                             {/* Related */}
                             {/* <div className="mb-4 border border-gray-400 rounded w-full py-2 px-3">
