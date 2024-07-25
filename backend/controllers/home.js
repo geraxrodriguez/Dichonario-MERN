@@ -4,7 +4,7 @@ const validator = require('validator');
 
 module.exports = {
     cron: (req, res) => {
-        res.status(201).send('ok')
+        res.send('ok')
     },
     getDichos: async (req, res) => {
         try {
