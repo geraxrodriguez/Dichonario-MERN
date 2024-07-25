@@ -11,6 +11,7 @@ const SubmitDichoPage = () => {
     const [examples, setExamples] = useState(['']);
     const [related, setRelated] = useState('');
     const [comments, setComments] = useState('');
+    const [history, setHistory] = useState('');
 
     // navigate use to redirect after submitting Dicho
     const navigate = useNavigate();
@@ -25,6 +26,7 @@ const SubmitDichoPage = () => {
             examples,
             related,
             comments,
+            history: history || 'No history yet for this dicho.',
         };
         console.log("New Dicho:", newDicho)
         axios
@@ -70,7 +72,7 @@ const SubmitDichoPage = () => {
 
                             <div className="mb-4">
                                 <label className="block text-gray-700 font-bold mb-2"
-                                >Dicho</label
+                                >* Dicho</label
                                 >
                                 <input
                                     type="text"
@@ -89,7 +91,7 @@ const SubmitDichoPage = () => {
                                 <label
                                     htmlFor="literalMeaning"
                                     className="block text-gray-700 font-bold mb-2"
-                                >Literal Meaning</label
+                                >* Literal Meaning</label
                                 >
                                 <textarea
                                     id="literalMeaning"
@@ -108,7 +110,7 @@ const SubmitDichoPage = () => {
                                 <label
                                     htmlFor="actualMeaning"
                                     className="block text-gray-700 font-bold mb-2"
-                                >Actual Meaning</label
+                                >* Actual Meaning</label
                                 >
                                 <textarea
                                     id="actualMeaning"
@@ -122,12 +124,29 @@ const SubmitDichoPage = () => {
                                 ></textarea>
                             </div>
 
+                            {/* History */}
+                            <div className="mb-4">
+                                <label
+                                    htmlFor="history"
+                                    className="block text-gray-700 font-bold mb-2"
+                                >History and Origins</label
+                                >
+                                <textarea
+                                    id="history"
+                                    name="history"
+                                    className="border border-gray-400 rounded w-full py-2 px-3"
+                                    rows="3"
+                                    value={history}
+                                    onChange={(e) => setHistory(e.target.value)}
+                                ></textarea>
+                            </div>
+
                             {/* Examples  */}
                             <div className="mb-4 border border-gray-400 rounded w-full py-2 px-3 mb-2">
                                 <label
                                     htmlFor="examples"
                                     className="block text-gray-700 font-bold mb-2"
-                                >Example(s)</label
+                                >* Example(s)</label
                                 >
                                 {examples.map((example, index) => (
                                     <div key={index} className="example-field">

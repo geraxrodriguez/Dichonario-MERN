@@ -5,44 +5,44 @@ import axios from 'axios';
 import styles from '../styles/Home.module.css';
 
 const SearchBar = () => {
-  const [ input, setInput ] = useState("");
-  const [ searchResults, setSearchResults ] = useState([]);
+  // const [ input, setInput ] = useState("");
+  // const [ searchResults, setSearchResults ] = useState([]);
   const navigate = useNavigate();
   // const [ selectedDicho, setSelectedDicho ] = useState({})
 
-  const fetchData = (input) => {
-    fetch('http://localhost:2222/dichos')
-      .then((response) => response.json())
-      .then((json) => {
-        const dichos = json.dichos;
-        const searchResults = dichos.filter(dicho => {
-          return (
-            input &&                                  // if user has typed in a value
-            dicho &&                                  // if anything in our dichos 
-            dicho.dicho &&                            // if dicho has dicho property
-            dicho.dicho.toLowerCase().includes(input.toLowerCase()) // wouldn't we need to make the value lowercase too?
-          );
-        });
-        setSearchResults(searchResults);
-      })
-  };
+  // const fetchData = (input) => {
+  //   fetch('http://localhost:2222/dichos')
+  //     .then((response) => response.json())
+  //     .then((json) => {
+  //       const dichos = json.dichos;
+  //       const searchResults = dichos.filter(dicho => {
+  //         return (
+  //           input &&                                  // if user has typed in a value
+  //           dicho &&                                  // if anything in our dichos 
+  //           dicho.dicho &&                            // if dicho has dicho property
+  //           dicho.dicho.toLowerCase().includes(input.toLowerCase()) // wouldn't we need to make the value lowercase too?
+  //         );
+  //       });
+  //       setSearchResults(searchResults);
+  //     })
+  // };
 
   // This functions does two things:
   // 1. Sets our input variable, which then updates our 'value' attribute within the form.
   // 2. Uses our input variable to fetch data from API after every change. 
-  const handleChange = eTargetValue => {
-    setInput(eTargetValue);
-    fetchData(input);
-  };
+  // const handleChange = eTargetValue => {
+  //   setInput(eTargetValue);
+  //   fetchData(input);
+  // };
   
-  const selectSearchResult = selectedSearchResult => {
-    const id = selectedSearchResult._id
-    navigate(`/dichos/${id}`)
-    // setSelectedDicho(result);
-    // setResults([]);
-    // setInput(result);
-    // console.log(selectedSearchResult)
-  };
+  // const selectSearchResult = selectedSearchResult => {
+  //   const id = selectedSearchResult._id
+  //   navigate(`/dichos/${id}`)
+  //   // setSelectedDicho(result);
+  //   // setResults([]);
+  //   // setInput(result);
+  //   // console.log(selectedSearchResult)
+  // };
 
   const submit = (e) => {
     e.preventDefault();
@@ -74,30 +74,43 @@ const SearchBar = () => {
       console.log('Error fetching DOTD\'s ID')
     }
   };
+  const browseDichos = async () => {
+    try {
+      // console.log('surprise me clicked')
+      // const res = await axios.get('http://localhost:2222/dichos');
+      // const id = res.data
+      navigate(`http://localhost:2222/dichos`)
+    } catch (error) {
+      console.log('Error fetching DOTD\'s ID')
+    }
+  };
 
   return (
     <form onSubmit={submit} className={styles.searchBar}>
   
       {/* INPUT FIELD */}
-      <input
+      {/* <input
         className="border rounded-lg w-full py-1 px-5 mb-1 text-2xl required"
         placeholder="Search dichos..."
         value={input}
         onChange={(e) => handleChange(e.target.value)}
-      />
+      /> */}
   
       {/* SEARCH RESULTS LIST */}
-      { searchResults && 
+      {/* { searchResults && 
         searchResults.length > 0 && 
         <SearchResultsList searchResults={searchResults} selectSearchResult={selectSearchResult} />
-      }
+      } */}
   
       {/* BUTTONS */}
       <div className="w-full flex space-x-2 justify-center mt-3">
-        <button type="submit" className="bg-indigo-500 text-white rounded-md px-3 py-2">
+        {/* <button type="submit" className="bg-indigo-500 text-white rounded-md px-3 py-2">
           Search
-        </button>
+        </button> */}
 
+        <div className="bg-indigo-500 text-white rounded-md px-3 py-2">
+          <Link to='https://dichonario.netlify.app/dichos'> Browse Dichos </Link>
+        </div>
         <div className="bg-indigo-500 text-white rounded-md px-3 py-2">
           <Link onClick={surpriseMe}> Surprise Me </Link>
         </div>

@@ -46,21 +46,27 @@ const SingleDichoPage = () => {
                             Literal Translation:
                         </h3>
                         <p className="text-lg mb-6">
-                            {dicho.meaning}
+                            {dicho.literalMeaning}
                         </p>
 
                         <h3 className="text-indigo-800 font-bold mb-1">
                             Actually Means:
                         </h3>
                         <p className="text-lg mb-6">
-                            {dicho.meaning}
+                            {dicho.actualMeaning}
                         </p>
 
                         <h3 className="text-indigo-800 font-bold mb-1">
                             Example
                         </h3>
                         <p className="text-lg mb-6">
-                            {dicho.example}
+                            {dicho.examples}
+                        </p>
+                        <h3 className="text-indigo-800 font-bold mb-1">
+                            History and Origins
+                        </h3>
+                        <p className="text-lg mb-6">
+                            {dicho.history}
                         </p>
 
                         <form className="text-lg/6" onSubmit={submitSuggestions}>

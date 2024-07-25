@@ -43,7 +43,7 @@ module.exports = {
         try {
             // console.log('We reached the createSub method')
             console.log(req.body)
-            const { dicho, literalMeaning, actualMeaning, examples, related, comments } = req.body
+            const { dicho, literalMeaning, actualMeaning, examples, related, comments, history } = req.body
             const sub = await Sub.create({
                 dicho,
                 literalMeaning,
@@ -51,6 +51,7 @@ module.exports = {
                 examples,
                 related,
                 comments,
+                history,
             })
             return res.status(201).send(sub);
         } catch (err) {
