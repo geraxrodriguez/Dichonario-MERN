@@ -30,6 +30,6 @@ const SubSchema = new mongoose.Schema({
         type: String,
         required: false,
     },
-})
+}, { strict: false });
 
 module.exports = mongoose.model('Sub', SubSchema)
