@@ -1,5 +1,5 @@
 const express = require('express')
-const cookieParser = require('cookie-parser');
+// const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const session = require('express-session') 
 const MemoryStore = require('memorystore')(session)
@@ -22,10 +22,15 @@ app.use(session({
         checkPeriod: 86400000 // prune expired entires every 24h
     }),
 }));
-app.use(passport.initialize());
-app.use(passport.session());
 app.use(cors())
 app.use(express.static('public'))
+
+// Passport initializaiton
+app.use(passport.initialize());
+app.use(passport.session());
+
+// Passport configuration
+require('./config/passport');
 
 // Routes
 const mainRoutes = require('./routes/mainRoutes')

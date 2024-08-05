@@ -1,8 +1,13 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
 
-const UserSchema = new mongoose.SchemaType({
+const UserSchema = new mongoose.Schema({
         username: {
+            type: String,
+            required: true,
+            unique: true,
+        },
+        email: {
             type: String,
             required: true,
             unique: true,
@@ -11,7 +16,15 @@ const UserSchema = new mongoose.SchemaType({
             type: String,
             required: true,
         },
-});
+        createdAt: {
+            type: Date,
+            default: Date.now,
+        },
+        updatedAt: {
+            type: Date,
+            default: Date.now,
+        },    
+}, { strict: false });
 
 
 // This runs before document is aved to db.
