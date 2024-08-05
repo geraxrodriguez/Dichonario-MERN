@@ -1,28 +1,18 @@
-const flash = require('express-flash')
+const express = require('express')
+const cookieParser = require('cookie-parser');
+const logger = require('morgan');
 const session = require('express-session') 
 const MemoryStore = require('memorystore')(session)
-const express = require('express')
 const connectDB = require('./config/database')
-const mainRoutes = require('./routes/mainRoutes')
-const adminRoutes = require('./routes/adminRoutes')
 const cors = require('cors')
-const app = express()
-
+const passport = require('passport');
 require('dotenv').config({path: './config/.env'})
 
-// connectDB()
+const app = express()
 
-app.set('view engine','ejs')
-app.use(express.static('public'))
-
-// guy in video require body-parser to do below, doesn't
-// look like i need to
-app.use(express.urlencoded({ extended: true }))
-app.use(express.json())
-
-app.use(cors())
-
-//don't know what these do
+// Middleware
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 app.use(session({
     secret: 'secret key',
     resave: false,
@@ -31,16 +21,24 @@ app.use(session({
     store: new MemoryStore({
         checkPeriod: 86400000 // prune expired entires every 24h
     }),
-  }))
-  
-app.use(flash());
+}));
+app.use(passport.initialize());
+app.use(passport.session());
+app.use(cors())
+app.use(express.static('public'))
+
+// Routes
+const mainRoutes = require('./routes/mainRoutes')
+const adminRoutes = require('./routes/adminRoutes')
+const authRoutes = require('./routes/authRoutes');
 
 // routes
-app.use('/', mainRoutes)
-app.use('/admin', adminRoutes)
+app.use('/', mainRoutes);
+app.use('/admin', adminRoutes);
+app.use('/auth', authRoutes);
 
 
-//Connect to the database before listening
+// Connect to the database before listening
 connectDB().then(() => {
     app.listen(process.env.PORT, () => {
         console.log(`Server running on port ${process.env.PORT}`)
