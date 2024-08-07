@@ -33,7 +33,7 @@ const SubmitDichoPage = () => {
             .post('http://localhost:2222/submit-dicho', newDicho)
             .then(() => {
                 console.log('Dicho submitted successfully.')
-                navigate('/success');
+                // navigate('/success');
             })
             .catch((error) => {
                 console.log(error);

@@ -24,27 +24,30 @@ router.post('/sign-up', async (req, res) => {
     }
 });
 
+
 // router.post('/login', 
 //     passport.authenticate('local', { 
-//         successRedirect: '/auth/success',
-//         failureRedirect: '/auth/fail'
-//     })
+//         failureRedirect: 'http://localhost:5173/login' }),
+//         (req, res) => {
+//             console.log(`reached router.post /login. req: ${req.body}`);
+//             return res.status(200).send('ok');
+//         },
 // );
 
-router.post('/login', 
-    passport.authenticate('local', { failureRedirect: '/login' }),
-    function(req, res) {
-      res.status(200).redirect('/');
-    });
-
-router.get('/success', (req, res) => {
-    console.log('success!')
-    res.send('Login successful!');
-});
-
-router.get('/fail', (req, res) => {
-    console.log('booooo')
-    res.send('Login failed!');
+router.post('/login', (req, res, next) => {
+    const authMiddleware = passport.authenticate('local', (err, user, info) => {
+        if (err) { return next(err); }
+        
+        if (!user) { return res.status(401).json({ message: info.message }); }
+        
+        req.logIn(user, err => {
+            if (err) { return next(err); }
+            return res.status(200).json({ message: 'Authentication successful', user})
+        });
+    })
+    
+    // Executre authenticatioin middleware
+    authMiddleware(req, res, next);
 });
 
 module.exports = router

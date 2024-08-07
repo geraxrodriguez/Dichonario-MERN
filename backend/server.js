@@ -1,6 +1,5 @@
 const express = require('express')
-// const cookieParser = require('cookie-parser');
-const logger = require('morgan');
+const cookieParser = require('cookie-parser');
 const session = require('express-session') 
 const MemoryStore = require('memorystore')(session)
 const connectDB = require('./config/database')

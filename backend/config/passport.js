@@ -1,3 +1,5 @@
+// this file configures authenticate() used in /login route
+
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 const User = require('../models/User');
@@ -10,16 +12,18 @@ const User = require('../models/User');
 passport.use(new LocalStrategy(
     async (username, password, done) => {
         try {
+            console.log('reached passport.js')
             const user = await User.findOne({ username });
             if (!user) { return done(null, false, { message: 'Sorry! That username doesn\'t exist.' }); }
             
             const isMatch = await user.comparePassword(password);
             if (!isMatch) { return done(null, false, { message: 'Incorrect password.' }); }
 
-            console.log('user logged in')
+            console.log('finished passport.js: user logged in')
             return done(null, user);
         } catch (error) {
-            return done(error);
+            console.log('')
+            return done('No user found', null);
         }
     }
 ));
